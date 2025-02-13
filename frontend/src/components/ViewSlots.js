@@ -1,96 +1,3 @@
-// import React, { Component } from "react";
-// import { variables } from "../variables";
-
-// export class ViewSlots extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       slots: [], // Initialize slots as an empty array
-//       selectedDate: "", // Store the selected date
-//     };
-//   }
-
-//   // Handle date input change
-//   handleDateChange = (e) => {
-//     this.setState({ selectedDate: e.target.value });
-//   };
-
-//   // Fetch available time slots for the selected date
-//   fetchAvailableSlots = () => {
-//     const { selectedDate } = this.state;
-
-//     if (!selectedDate) {
-//       alert("Please select a date.");
-//       return;
-//     }
-
-//     fetch(`${variables.API_URL}slots?date=${selectedDate}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         // Ensure data is an array
-//         const slots = Array.isArray(data) ? data : [];
-
-//         // Filter out booked slots (is_booked = FALSE)
-//         const availableSlots = slots.filter((slot) => !slot.is_booked);
-
-//         this.setState({ slots: availableSlots });
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching slots:", error);
-//         this.setState({ slots: [] }); // Set slots to an empty array in case of error
-//       });
-//   };
-
-//   render() {
-//     const { slots, selectedDate } = this.state;
-//     return (
-//       <div className="container">
-//         <h2>Available Time Slots</h2>
-
-//         {/* Date Input Field */}
-//         <div className="mb-3">
-//           <label htmlFor="dateInput" className="form-label">
-//             Select Date:
-//           </label>
-//           <input
-//             type="date"
-//             className="form-control"
-//             id="dateInput"
-//             value={selectedDate}
-//             onChange={this.handleDateChange}
-//           />
-//         </div>
-
-//         {/* Button to Fetch Available Slots */}
-//         <button
-//           className="btn btn-primary mb-3"
-//           onClick={this.fetchAvailableSlots}
-//         >
-//           Check Available Slots
-//         </button>
-
-//         {/* Table to Display Available Slots */}
-//         <table className="table table-striped">
-//           <thead>
-//             <tr>
-//               <th>Date</th>
-//               <th>Time Slot</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {slots.map((slot) => (
-//               <tr key={slot.id}>
-//                 <td>{slot.date}</td>
-//                 <td>{slot.time_slot}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   }
-// }
-
 import React, { Component } from "react";
 import { variables } from "../variables";
 
@@ -98,13 +5,13 @@ export class ViewSlots extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slots: [], // Initialize slots as an empty array
-      selectedDate: "", // Store the selected date
-      showAddSlotModal: false, // Control the visibility of the add slot modal
-      username: "", // Store the username input
-      password: "", // Store the password input
-      newDate: "", // Store the new slot date
-      newTimeSlot: "", // Store the new slot time
+      slots: [],
+      selectedDate: "",
+      showAddSlotModal: false,
+      username: "",
+      password: "",
+      newDate: "",
+      newTimeSlot: "",
     };
   }
 
