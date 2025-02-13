@@ -1,3 +1,91 @@
+-------------Appointment Booking System-------------------------
+
+This is a full-stack Appointment Booking System built using React.js for the front-end, Node.js for the back-end, and MySQL for the database. Users can view available time slots, book appointments, and manage their bookings.
+
+-------Features-------
+
+- View Available Time Slots:Users can view all available time slots for a specific date.
+
+- Book an Appointment:Users can book an appointment by selecting a date, time slot, and providing their details (name and contact).
+
+- View Booked Appointments:Users can view all their booked appointments.
+
+- Cancel an Appointment:Users can cancel a booked appointment.
+
+- Admin Features:Admins can add new time slots by providing a username and password (hardcoded as admin for both).
+
+-------Tools and Technologies Used------
+---Front-End---
+
+    React.js: A JavaScript library for building user interfaces.
+
+    Bootstrap: A CSS framework for styling the application.
+
+    Axios: A library for making HTTP requests to the back-end.
+
+---Back-End---
+
+    Node.js: A JavaScript runtime for building the back-end.
+
+    Express.js: A web framework for Node.js to create RESTful APIs.
+
+    MySQL: A relational database management system for storing data.
+
+---Development Tools---
+
+    Visual Studio Code: A code editor for writing and debugging the application.
+
+    Postman: A tool for testing API endpoints.
+
+    Git: A version control system for managing the codebase.
+
+-------------------Steps to Set Up and Run the Project Locally----------------------
+
+1.  Clone the project repository to your local machine
+
+2.  Set up the MySQL database:
+
+    Create a database named appointment_booking_system.
+
+    Run the following SQL queries to create the required tables:
+
+        CREATE DATABASE appointment_booking_system;
+        USE appointment_booking_system;
+
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE TABLE time_slots (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            date DATE NOT NULL,
+            time_slot TIME NOT NULL,
+            is_booked BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE TABLE appointments (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT,
+            date DATE NOT NULL,
+            time_slot TIME NOT NULL,
+            user_name VARCHAR(100) NOT NULL,
+            contact VARCHAR(15) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            UNIQUE(date, time_slot)
+        );
+
+3.  Start the back-end server
+
+4.  Test the Application
+    Open your browser and navigate to http://localhost:3000.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
